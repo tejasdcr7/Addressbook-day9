@@ -26,7 +26,7 @@ public class AddressBook {
             break;
             case 2:editContact();
                 break;
-            case 3:
+            case 3:deleteContact();
                 break;
         }
 
@@ -70,6 +70,10 @@ public class AddressBook {
             contact.Email = sc.next();
 
 
+        }
+
+        void deleteContact(){
+            System.out.println("Contact Deleted");
         }
 
 
