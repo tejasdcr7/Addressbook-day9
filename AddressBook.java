@@ -1,83 +1,109 @@
 package com.bridgelabz.addbook;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
 public class AddressBook {
-
+    List<ContactDetails> contactList = new ArrayList<>();
     public static void main(String[] args) {
-       AddressBook a = new AddressBook();
+        int option;
+        int Exit=5;
+        AddressBook a = new AddressBook();
         a.showMenu();
-        a.userSelection();
-        a.editContact();
+        a.userSelection(1);
+        do {
+            option= a.showMenu();
+        }
+        while (option!=Exit);
+
 
     }
-    public int showMenu(){
+
+    public int showMenu() {
         Scanner sc = new Scanner(System.in);
-        System.out.println(" Welcome to the Address Book \n 1.Add Contact\n 2.Edit Contact\n 3.Delete Contact\n");
+        System.out.println(" Welcome to the Address Book \n 1.Add Contact\n 2.Edit Contact\n 3.Delete Contact\n" +
+                " 4.Print contact");
 
         int option = sc.nextInt();
         return option;
 
     }
-    void userSelection(int option){
-        switch (option){
 
-            case 1:addContact();
-            break;
-            case 2:editContact();
+    void userSelection(int option) {
+        switch (option) {
+
+            case 1:
+                addContact();
                 break;
-            case 3:deleteContact();
+            case 2:
+                editContact();
                 break;
+            case 3:
+                deleteContact();
+                break;
+            case 4:printContact(contactList);
+
         }
 
     }
 
-      void addContact(){
-          Scanner sc = new Scanner(System.in);
-          ContactDetails contact = new ContactDetails();
-          System.out.println( "Enter First Name" );
-          contact.First_Name = sc.next();
-          System.out.println( "Enter Last Name" );
-          contact.Last_Name = sc.next();
-          System.out.println("Enter Address");
-          contact.Address = sc.next();
-          System.out.println("Enter City Name");
-          contact.City = sc.next();
-          System.out.println("Enter State");
-          contact.State = sc.next();
-          System.out.println("Enter Phone Number ");
-          contact.Phone_Number = sc.next();
-          System.out.println("Enter Email Id");
-          contact.Email = sc.next();
-        }
+    void addContact() {
+        Scanner sc = new Scanner(System.in);
+        ContactDetails contact = new ContactDetails();
+        System.out.println("Enter First Name");
+        contact.First_Name = sc.next();
+        System.out.println("Enter Last Name");
+        contact.Last_Name = sc.next();
+        System.out.println("Enter Address");
+        contact.Address = sc.next();
+        System.out.println("Enter City Name");
+        contact.City = sc.next();
+        System.out.println("Enter State");
+        contact.State = sc.next();
+        System.out.println("Enter Phone Number ");
+        contact.Phone_Number = sc.next();
+        System.out.println("Enter Email Id");
+        contact.Email = sc.next();
 
-        void editContact(){
-            Scanner sc = new Scanner(System.in);
-            ContactDetails contact = new ContactDetails();
-            System.out.println( "Edit First Name" );
-            contact.First_Name = sc.next();
-            System.out.println( "Edit Last Name" );
-            contact.Last_Name = sc.next();
-            System.out.println("Edit Address");
-            contact.Address = sc.next();
-            System.out.println("Edit City Name");
-            contact.City = sc.next();
-            System.out.println("Edit State");
-            contact.State = sc.next();
-            System.out.println("Edit Phone Number ");
-            contact.Phone_Number = sc.next();
-            System.out.println("Edit Email Id");
-            contact.Email = sc.next();
+        contactList.add(contact);
+    }
+
+    void editContact() {
+        Scanner sc = new Scanner(System.in);
+        ContactDetails contact = new ContactDetails();
+        System.out.println("Edit First Name");
+        contact.First_Name = sc.next();
+        System.out.println("Edit Last Name");
+        contact.Last_Name = sc.next();
+        System.out.println("Edit Address");
+        contact.Address = sc.next();
+        System.out.println("Edit City Name");
+        contact.City = sc.next();
+        System.out.println("Edit State");
+        contact.State = sc.next();
+        System.out.println("Edit Phone Number ");
+        contact.Phone_Number = sc.next();
+        System.out.println("Edit Email Id");
+        contact.Email = sc.next();
 
 
-        }
+    }
 
-        void deleteContact(){
-            System.out.println("Contact Deleted");
+    void deleteContact() {
+        System.out.println("Contact Deleted");
+    }
+
+
+    void printContact(List contactList) {
+        for (int i = 0; i < contactList.size(); i++) {
+            System.out.println(contactList.get(i));
+
         }
 
 
     }
+}
 
 
 
